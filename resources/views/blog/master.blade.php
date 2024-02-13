@@ -64,7 +64,7 @@
          <!-- banner section end --> 
       </div>
       <!-- header section end --> 
-      <div class="container">
+      {{-- <div class="container">
          <div class="touch_setion">
             <div class="box_main">
                <div class="image_2 active">
@@ -82,7 +82,7 @@
                </div>
             </div>
          </div>
-      </div>
+      </div> --}}
   
       @yield('content')
       <!-- tag section end -->
