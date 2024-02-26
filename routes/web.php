@@ -39,6 +39,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin',[AdminController::class,'index'])->name('admin');
+// Route::get('/admin',[AdminController::class,'index'])->name('admin');
+
+Route::prefix('admin')->middleware('auth','isAdmin')->get('/dashboard',[Admincontroller::class,'index']);
 
 
