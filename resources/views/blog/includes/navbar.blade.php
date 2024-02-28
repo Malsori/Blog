@@ -23,7 +23,21 @@
                    <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="{{route('login')}}">Login</a>
+                  @if (Auth::check())
+                  <a class="nav-link" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"> 
+                  
+                  {{ __('Log out') }} 
+                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                   @csrf
+               </form>
+               </a>
+
+               @else
+               <a class="nav-link" href="{{route('login')}}">Login</a> 
+                  @endif 
+                  
                 </li>
                 <li class="nav-item">
                    <a class="nav-link" href="#"><img src="{{ asset('assets/images/serach-icon.png')}}"></a>
