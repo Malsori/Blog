@@ -41,6 +41,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Route::get('/admin',[AdminController::class,'index'])->name('admin');
 
-Route::prefix('admin')->middleware('auth','isAdmin')->get('/dashboard',[Admincontroller::class,'index']);
+Route::prefix('admin')->middleware('auth','isAdmin')->group(
+    function()
+    {
+        Route::get('/dashboard',[Admincontroller::class,'index'])->name('dashboard');
+        Route::get('/add-products',[Admincontroller::class,'create'])->name('add-products');
+        // Route::get('/add-products',[Admincontroller::class,'create']);
 
+    }
+);
 
