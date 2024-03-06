@@ -46,6 +46,8 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(
     {
         Route::get('/dashboard',[Admincontroller::class,'index'])->name('dashboard');
         Route::get('/add-products',[Admincontroller::class,'create'])->name('add-products');
+        Route::post('/add-products',[Admincontroller::class,'store']);
+        Route::get('/products',[Admincontroller::class,'product'])->name('products');
         // Route::get('/add-products',[Admincontroller::class,'create']);
 
     }
