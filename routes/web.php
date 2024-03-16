@@ -48,6 +48,8 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(
         Route::get('/add-products',[Admincontroller::class,'create'])->name('add-products');
         Route::post('/add-products',[Admincontroller::class,'store']);
         Route::get('/products',[Admincontroller::class,'product'])->name('products');
+        Route::get('/edit-products/{id}',[Admincontroller::class,'edit'])->name('edit-products');
+        Route::put('/update-products/{id}',[Admincontroller::class,'update'])->name('update-products');
         // Route::get('/add-products',[Admincontroller::class,'create']);
 
     }

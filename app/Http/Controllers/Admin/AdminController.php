@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\product;
 use App\Http\Requests\ProductFormRequest;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\File;
 class AdminController extends Controller
 {
     /**
@@ -20,7 +20,8 @@ class AdminController extends Controller
 
     public function product()
     {
-        return view('blog.Admin.products');
+        $products=Product::all();
+        return view('blog.Admin.products',['products'=>$products]);
     }
 
     /**
@@ -68,17 +69,43 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $products=Product::findOrFail($id);
+        return view('blog.Admin.edit',['products'=>$products]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductFormRequest $request, $id)
     {
-        //
+        $data=$request->validated();
+
+        $product=Product::findOrFail($id);
+        $product->name=$data['name'];
+        $product->slug=$data['slug'];
+        $product->description=$data['description'];
+        $product->price=$data['price'];
+
+        if($request->hasfile('image'))
+        {
+            $destination='uploads/'.$product->image;
+
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+
+            $file=$request->file('image');
+            $filename=time().'.'.$file->getClientOriginalExtension();
+            $file->move('uploads/',$filename);
+            $product->image=$filename;
+        }
+        $product->status=$request->status==true ? 1:0;
+        $product->created_by=Auth::user()->id;
+        $product->update();
+        return redirect('admin/products')->with('status','Product has been updated');
     }
 
     /**
