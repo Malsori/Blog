@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\SendMailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,7 @@ Route::get('/features', function () {
     return view('blog.features');
 })->name('features');
 
-Route::get('/contact', function () {
-    return view('blog.contact');
-})->name('contact');
+
 
 Auth::routes();
 
@@ -50,8 +49,15 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(
         Route::get('/products',[Admincontroller::class,'product'])->name('products');
         Route::get('/edit-products/{id}',[Admincontroller::class,'edit'])->name('edit-products');
         Route::put('/update-products/{id}',[Admincontroller::class,'update'])->name('update-products');
+        Route::get('/delete-products/{id}',[Admincontroller::class,'destroy'])->name('delete-products');
+        
         // Route::get('/add-products',[Admincontroller::class,'create']);
 
     }
+
+   
 );
+
+Route::get('/contact',[SendMailController::class,'index'])->name('contact');
+    Route::post('/sendMail',[SendMailController::class,'sendMail'])->name('sendMail');
 

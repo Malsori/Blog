@@ -111,8 +111,25 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $product=Product::findOrFail($id);
+
+        if($product)
+        {
+            $destination='uploads'.$product->image;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+
+            $product->delete();
+             return redirect('admin/products')->with('status','Product deleted sucessfully!');
+    
+        }
+        else
+        {
+            return redirect('admin/products')->with('status','Product could not be deleted');
+        }
     }
 }

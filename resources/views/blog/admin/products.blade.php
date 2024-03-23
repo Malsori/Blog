@@ -39,9 +39,9 @@
                         <td>
                             <a href="{{ url('admin/edit-products/'.$item->id) }}" class="btn btn-success">Edit</a>
                         </td>
-                        {{-- <td>
-                            <a href="{{ url('admin/delete-category/'.$item->id) }}" class="btn btn-danger">Delete</a>
-                        </td> --}}
+                        <td>
+                            <a href="{{ url('admin/delete-products/'.$item->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?');">Delete</a>
+                        </td>
                     </tr>
                 @endforeach
             </table>
