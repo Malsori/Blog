@@ -6,12 +6,14 @@
 <div class="about_section layout_padding">
    <div class="container">
       <div class="row">
+         @foreach($products as $item)
+         @if($item->status=='1')
          <div class="col-lg-8 col-sm-12">
-            <div class="about_img"><img src="{{ asset('assets/images/img-8.png')}}"></div>
-            <div class="like_icon"><img src="{{ asset('assets/images/like-icon.png')}}"></div>
-            <p class="post_text">Post By : 09/06/2019</p>
-            <h2 class="most_text">Most Awesome Blue Lake With Snow <br>River</h2>
-            <p class="lorem_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+            <div class="about_img" style="object-fit: contain"><img src="{{ asset('uploads/'.$item->image)}}" style="width:500px;margin-top:20px;object-fit:contain"></div>
+            
+            <p class="post_text">{{ $item->price }}</p>
+            <h2 class="most_text">{{ $item->name }}</h2>
+            <p class="lorem_text">{{ $item->description }}</p>
             <div class="social_icon_main">
                <div class="social_icon">
                   <ul>
@@ -36,6 +38,17 @@
                </div>
             </div>
          </div>
+         
+         @endif
+         @endforeach
+        
+        <p>No products available</p>
+
+         
+         
+         
+
+         
       </div>
    </div>
 </div>

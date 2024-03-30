@@ -24,6 +24,12 @@ class AdminController extends Controller
         return view('blog.Admin.products',['products'=>$products]);
     }
 
+    public function productUsers()
+    {
+        $products=Product::all();
+        return view('blog.blog',['products'=>$products]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -87,6 +93,7 @@ class AdminController extends Controller
         $product->slug=$data['slug'];
         $product->description=$data['description'];
         $product->price=$data['price'];
+        
 
         if($request->hasfile('image'))
         {
@@ -102,7 +109,7 @@ class AdminController extends Controller
             $file->move('uploads/',$filename);
             $product->image=$filename;
         }
-        $product->status=$request->status==true ? 1:0;
+        $product->status= $request -> status==true ? 1:0;
         $product->created_by=Auth::user()->id;
         $product->update();
         return redirect('admin/products')->with('status','Product has been updated');

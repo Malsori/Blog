@@ -38,7 +38,7 @@
           </div>
           <div class="form-group">
             <label for="status">Status</label>
-            <input type="checkbox" class="form-control"  id="status" name="Status" value="1" @if(old('name') == 1) checked @endif>
+            <input type="checkbox" class="form-control"  id="status" name="status" value="1" @if(old('name') == 1) checked @endif>
           </div>
           <div class="form-group">
             <label for="exampleTextarea1">Textarea</label>

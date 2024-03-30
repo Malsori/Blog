@@ -24,9 +24,7 @@ Route::get('/about', function () {
     return view('blog.about');
 })->name('about');
 
-Route::get('/blog', function () {
-    return view('blog.blog');
-})->name('blog');
+
 
 Route::get('/features', function () {
     return view('blog.features');
@@ -60,4 +58,6 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(
 
 Route::get('/contact',[SendMailController::class,'index'])->name('contact');
     Route::post('/sendMail',[SendMailController::class,'sendMail'])->name('sendMail');
+    
+    Route::get('/blog',[Admincontroller::class,'productUsers'])->name('blog');
 

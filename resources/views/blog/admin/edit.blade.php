@@ -38,7 +38,7 @@
           </div>
           <div class="form-group">
             <label for="status">Status</label>
-            <input type="checkbox" class="form-control"  id="status" name="Status" {{ $products->status==1?'checked':'' }}>
+            <input type="checkbox" class="form-control"  id="status" name="status" {{ $products->status == 1 ? 'checked':'' }}>
           </div>
           <div class="form-group">
             <label for="exampleTextarea1">Textarea</label>
