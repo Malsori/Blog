@@ -6,8 +6,11 @@
 <div class="about_section layout_padding">
    <div class="container">
       <div class="row">
+         
          @foreach($products as $item)
-         @if($item->status=='1')
+         @if($item->status=='0')
+         <p>No products</p>
+         @else
          <div class="col-lg-8 col-sm-12">
             <div class="about_img" style="object-fit: contain"><img src="{{ asset('uploads/'.$item->image)}}" style="width:500px;margin-top:20px;object-fit:contain"></div>
             
@@ -17,9 +20,11 @@
             <div class="social_icon_main">
                <div class="social_icon">
                   <ul>
-                     <li><a href="#"><img src="{{ asset('assets/images/fb-icon.png')}}"></a></li>
-                     <li><a href="#"><img src="{{ asset('assets/images/twitter-icon.png')}}"></a></li>
-                     <li><a href="#"><img src="{{ asset('assets/images/instagram-icon.png')}}"></a></li>
+                     <form>
+                     <li><ion-icon name="heart-outline" ></ion-icon></li>
+                     <li><ion-icon name="chatbox-outline"></ion-icon></li>
+                     <li><ion-icon name="bookmark-outline"></ion-icon></li>
+                     </form>
                   </ul>
                </div>
                <div class="read_bt"><a href="#">Read More</a></div>
@@ -39,16 +44,18 @@
             </div>
          </div>
          
-         @endif
+       
+       
+        @endif
          @endforeach
         
-        <p>No products available</p>
+         
+         
+         
+         
 
-         
-         
-         
-
-         
+         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
       </div>
    </div>
 </div>
