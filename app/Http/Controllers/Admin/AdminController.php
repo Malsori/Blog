@@ -26,8 +26,9 @@ class AdminController extends Controller
 
     public function productUsers()
     {
-        $products = Product::with('creator')->get();
-        return view('blog.blog',['products'=>$products]);
+        $products = Product::with('creator')
+        ->orderBy('created_at', 'desc')->get();
+        return view('blog.blog', ['products' => $products]);
     }
 
     /**

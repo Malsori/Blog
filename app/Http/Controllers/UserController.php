@@ -27,6 +27,17 @@ class UserController extends Controller
         return view('blog.addProducts_user');
     }
 
+    public function product()
+    {
+        $userId = Auth::id(); // Get the ID of the authenticated user
+
+        $products = Product::where('created_by', $userId)
+                            ->with('creator')
+                            ->get();
+    
+        return view('blog.my_posts', ['products' => $products]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */

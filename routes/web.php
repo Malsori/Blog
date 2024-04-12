@@ -64,6 +64,7 @@ Route::prefix('user')->middleware('auth','isUser')->group(
         Route::get('/dashboard',[UserController::class,'index'])->name('dashboard');
         Route::get('/add-products',[UserController::class,'create'])->name('add-products');
         Route::post('/add-products',[UserController::class,'store']);
+        Route::get('/products',[Usercontroller::class,'product'])->name('products');
 
     }
 
