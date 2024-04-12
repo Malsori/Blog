@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SendMailController;
 
 /*
@@ -55,6 +56,23 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(
 
    
 );
+
+
+Route::prefix('user')->middleware('auth','isUser')->group(
+    function()
+    {
+        Route::get('/dashboard',[UserController::class,'index'])->name('dashboard');
+        Route::get('/add-products',[UserController::class,'create'])->name('add-products');
+        Route::post('/add-products',[UserController::class,'store']);
+
+    }
+
+
+);
+
+
+
+
 
 Route::get('/contact',[SendMailController::class,'index'])->name('contact');
     Route::post('/sendMail',[SendMailController::class,'sendMail'])->name('sendMail');

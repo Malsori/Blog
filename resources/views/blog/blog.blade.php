@@ -8,15 +8,15 @@
       <div class="row">
          
          @foreach($products as $item)
-         @if($item->status=='0')
-         <p>No products</p>
-         @else
+         @if($item->status=='1')
+         
          <div class="col-lg-8 col-sm-12">
             <div class="about_img" style="object-fit: contain"><img src="{{ asset('uploads/'.$item->image)}}" style="width:500px;margin-top:20px;object-fit:contain"></div>
             
             <p class="post_text">{{ $item->price }}</p>
             <h2 class="most_text">{{ $item->name }}</h2>
             <p class="lorem_text">{{ $item->description }}</p>
+            <p class="post_text">Posted by:{{ $item->creator->username }}</p>
             <div class="social_icon_main">
                <div class="social_icon">
                   <ul>

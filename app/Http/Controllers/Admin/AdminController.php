@@ -26,7 +26,7 @@ class AdminController extends Controller
 
     public function productUsers()
     {
-        $products=Product::all();
+        $products = Product::with('creator')->get();
         return view('blog.blog',['products'=>$products]);
     }
 
