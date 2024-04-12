@@ -49,7 +49,7 @@ class ProductFormRequest extends FormRequest
             'image' =>
             [
                 'nullable',
-                'mimes:jpg,jpeg,png,jfif'
+                'mimes:jpg,jpeg,png,jfif,webp'
                 
             ]
         ];

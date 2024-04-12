@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2024 at 02:56 AM
+-- Generation Time: Apr 13, 2024 at 12:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -163,15 +163,15 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `slug`, `description`, `price`, `image`, `status`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, 'De Rada', 'Very good', 'First product1', '4$', '1709747108.png', 1, 1, '2024-03-06 16:45:08', '2024-03-30 14:30:20'),
+(1, 'De Rada1', 'Very good', 'First product1', '4$', '1709747108.png', 1, 1, '2024-03-06 16:45:08', '2024-04-12 18:31:19'),
 (4, 'Pizza proshut', 'Quality', 'Freshly bakedl', '5$', '1711206102.jpg', 1, 1, '2024-03-23 14:01:42', '2024-03-30 14:32:35'),
 (5, 'Pizza margarita', 'nice', 'Fresh', '5$', '1711811403.jpg', 1, 1, '2024-03-30 14:10:03', '2024-03-30 14:10:03'),
 (6, 'Suxhuk', 'E shijshme', 'PIzza me suxhuk', '5$', '1711812027.jpg', 0, 1, '2024-03-30 14:20:27', '2024-03-30 14:20:27'),
 (7, 'Tuna', 'Very good', 'wdwd', '4$', '1711812593.jpg', 0, 1, '2024-03-30 14:29:53', '2024-03-30 14:29:53'),
-(8, 'Product added from user', 'new product', 'Fresh', '5$', '1712879756.PNG', 1, 2, '2024-04-11 21:55:56', '2024-04-11 21:55:56'),
-(9, 'Sidebar', 'Html', 'CSS', '10$', '1712879957.PNG', 0, 2, '2024-04-11 21:59:17', '2024-04-11 21:59:17'),
+(8, 'Product added from user', 'New movie', 'Aquaman', '6$', '1712954309.webp', 1, 2, '2024-04-11 21:55:56', '2024-04-12 18:38:29'),
 (10, 'Sidebar', 'Html', 'CSS', '10$', '1712879974.PNG', 0, 2, '2024-04-11 21:59:34', '2024-04-11 21:59:34'),
-(11, 'new', 'Very good', 'Tasty!', '5$', '1712880174.jpg', 1, 2, '2024-04-11 22:02:54', '2024-04-11 22:02:54');
+(11, 'new', 'Very good', 'Tasty!', '5$', '1712880174.jpg', 1, 2, '2024-04-11 22:02:54', '2024-04-11 22:02:54'),
+(12, 'hello there', 'Very good', 'freshly baked', '10$', '1712929403.jpg', 1, 2, '2024-04-12 11:43:23', '2024-04-12 11:43:23');
 
 -- --------------------------------------------------------
 
@@ -197,7 +197,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`, `username`) VALUES
-(1, 'Malsor', 'malsorarifi20@gmail.com', NULL, '$2y$12$gLs5ESEnOY6xf.aej30.v.HaZ2Y7G/huYmpElw/mHbTZoELRJrX7S', 'huteVZim8uMS1whgaO3XJ27qYD1nC4kwh9xNFFcbJCtycawycFgQA1GI3fZw', '2024-02-22 12:04:03', '2024-03-23 14:26:29', 1, 'Malsor'),
+(1, 'Malsor', 'malsorarifi20@gmail.com', NULL, '$2y$12$gLs5ESEnOY6xf.aej30.v.HaZ2Y7G/huYmpElw/mHbTZoELRJrX7S', 'cacY7oA9HA76h7o16WFFJPbo7sKv4P1KzRA6tNINWzGi9Hxt8wWSyqUMmL3w', '2024-02-22 12:04:03', '2024-03-23 14:26:29', 1, 'Malsor'),
 (2, 'user', 'user@gmail.com', NULL, '$2y$12$hFqlX2sOe64YzFQJeXqtGOm.xEi2Zk3/J8leirz42YC86Gj4bzFmu', NULL, '2024-02-26 16:10:55', '2024-02-26 16:10:55', 0, 'User'),
 (3, 'Arianit', 'arianittershnjaku@gmail.com', NULL, '$2y$12$lOs7BtNc2FhRLlihiIPoguMMKphjqUjWLxaB5KM7Ta4JZGFzzPo36', NULL, '2024-04-06 12:29:39', '2024-04-06 12:29:39', 0, 'Arianit'),
 (4, 'Fatlind', 'fatlind@gmail.com', NULL, '$2y$12$LJgpB9OHOL1taEn8uSh4tOIUGOcz5RpK5/jcB7aUD0bnIsgyeQjlq', NULL, '2024-04-06 12:34:40', '2024-04-06 12:34:40', 0, 'Fatlind'),
@@ -305,7 +305,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`

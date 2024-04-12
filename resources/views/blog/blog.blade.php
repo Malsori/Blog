@@ -3,15 +3,14 @@
     
 
 @section('content')
-<div class="about_section layout_padding">
-   <div class="container">
-      <div class="row">
+<div id="center">
+
          
          @foreach($products as $item)
          @if($item->status=='1')
          
          <div class="col-lg-8 col-sm-12">
-            <div class="about_img" style="object-fit: contain"><img src="{{ asset('uploads/'.$item->image)}}" style="width:500px;margin-top:20px;object-fit:contain"></div>
+            <div class="about_img" ><img src="{{ asset('uploads/'.$item->image)}}" style="width:500px;height:500px;margin-top:20px;object-fit:contain"></div>
             
             <p class="post_text">{{ $item->price }}</p>
             <h2 class="most_text">{{ $item->name }}</h2>
@@ -25,12 +24,15 @@
                      <li><ion-icon name="chatbox-outline"></ion-icon></li>
                      <li><ion-icon name="bookmark-outline"></ion-icon></li>
                      </form>
+                     
                   </ul>
+                  
                </div>
-               <div class="read_bt"><a href="#">Read More</a></div>
+               <hr>
+               {{-- <div class="read_bt"><a href="#">Read More</a></div> --}}
             </div>
          </div>
-         <div class="col-lg-4 col-sm-12">
+         {{-- <div class="col-lg-4 col-sm-12">
             <div class="about_main">
                <h1 class="follow_text">CONNECT & FOLLOW</h1>
                <div class="follow_icon">
@@ -44,7 +46,7 @@
             </div>
          </div>
          
-       
+        --}}
        
         @endif
          @endforeach
@@ -57,6 +59,5 @@
          <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
       </div>
-   </div>
-</div>
+
 @endsection

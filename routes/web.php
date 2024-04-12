@@ -38,38 +38,29 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/admin',[AdminController::class,'index'])->name('admin');
+Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/add-products', [AdminController::class, 'create'])->name('add-products_admin');
+    Route::post('/add-products', [AdminController::class, 'store']);
+    Route::get('/products', [AdminController::class, 'product'])->name('products_admin');
+    Route::get('/edit-products/{id}', [AdminController::class, 'edit'])->name('edit-products');
+    Route::put('/update-products/{id}', [AdminController::class, 'update'])->name('update-products');
+    Route::get('/delete-products/{id}', [AdminController::class, 'destroy'])->name('delete-products');
+});
 
-Route::prefix('admin')->middleware('auth','isAdmin')->group(
-    function()
-    {
-        Route::get('/dashboard',[Admincontroller::class,'index'])->name('dashboard');
-        Route::get('/add-products',[Admincontroller::class,'create'])->name('add-products');
-        Route::post('/add-products',[Admincontroller::class,'store']);
-        Route::get('/products',[Admincontroller::class,'product'])->name('products');
-        Route::get('/edit-products/{id}',[Admincontroller::class,'edit'])->name('edit-products');
-        Route::put('/update-products/{id}',[Admincontroller::class,'update'])->name('update-products');
-        Route::get('/delete-products/{id}',[Admincontroller::class,'destroy'])->name('delete-products');
-        
-        // Route::get('/add-products',[Admincontroller::class,'create']);
-
-    }
-
-   
-);
-
-
-Route::prefix('user')->middleware('auth','isUser')->group(
-    function()
-    {
-        Route::get('/dashboard',[UserController::class,'index'])->name('dashboard');
-        Route::get('/add-products',[UserController::class,'create'])->name('add-products');
-        Route::post('/add-products',[UserController::class,'store']);
-        Route::get('/products',[Usercontroller::class,'product'])->name('products');
-
-    }
+Route::prefix('user')->middleware('auth', 'isUser')->group(function () {
+    Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+    Route::get('/add-products', [UserController::class, 'create'])->name('add-products');
+    Route::post('/add-products', [UserController::class, 'store']);
+    Route::get('/products', [UserController::class, 'product'])->name('products');
+    Route::get('/edit-products/{id}', [UserController::class, 'edit'])->name('edit-products');
+    Route::put('/update-products/{id}', [UserController::class, 'update'])->name('update-products');
+    Route::get('/delete-products/{id}', [UserController::class, 'destroy'])->name('delete-products');
+    Route::get('/searchUser', [UserController::class, 'searchUser'])->name('searchUser');
+});
 
 
-);
+
 
 
 
@@ -78,5 +69,5 @@ Route::prefix('user')->middleware('auth','isUser')->group(
 Route::get('/contact',[SendMailController::class,'index'])->name('contact');
     Route::post('/sendMail',[SendMailController::class,'sendMail'])->name('sendMail');
     
-    Route::get('/blog',[Admincontroller::class,'productUsers'])->name('blog');
+    Route::get('/blog',[AdminController::class,'productUsers'])->name('blog');
 

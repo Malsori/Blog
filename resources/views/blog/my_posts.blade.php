@@ -3,15 +3,13 @@
     
 
 @section('content')
-{{-- <div class="about_section layout_padding"> --}}
-   <div class="container">
-      <div class="row">
-         
+
+         <div id="center">
          @foreach($products as $item)
          @if($item->status=='1')
          
          <div class="col-lg-8 col-sm-12">
-            <div class="about_img" style="object-fit: contain"><img src="{{ asset('uploads/'.$item->image)}}" style="width:500px;margin-top:20px;object-fit:contain"></div>
+            <div class="about_img" style="object-fit: contain"><img src="{{ asset('uploads/'.$item->image)}}" style="width:500px;height:500px;margin-top:20px;object-fit:contain"></div>
             
             <p class="post_text">{{ $item->price }}</p>
             <h2 class="most_text">{{ $item->name }}</h2>
@@ -24,8 +22,9 @@
                      <li><ion-icon name="heart-outline" ></ion-icon></li>
                      <li><ion-icon name="chatbox-outline"></ion-icon></li>
                      <li><ion-icon name="bookmark-outline"></ion-icon></li>
-                     <div class="read_bt"><a href="#">Read More</a></div>
-                     </form>
+                     <div class="read_bt"><a href="{{ url('user/edit-products/'.$item->id) }}" >Edit</a></div>
+                     <div class="read_bt"><a href="{{ url('user/delete-products/'.$item->id) }}" onclick="return confirm('Are you sure you want to delete this post!');" >Delete</a></div>
+                  </form>
                   </ul>
                   
                </div>
@@ -58,7 +57,6 @@
 
          <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-      </div>
-   </div>
+  
 </div>
 @endsection

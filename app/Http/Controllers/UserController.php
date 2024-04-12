@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\User;
 use App\Http\Requests\ProductFormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -74,17 +75,58 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $products=Product::findOrFail($id);
+        return view('blog.edit',['products'=>$products]);
     }
+
+   
+    public function searchUser(Request $request)
+    {
+        
+        $searchQuery = $request->input('search');
+
+        
+        $users = User::where('name', 'like', '%'.$searchQuery.'%')->get();
+
+        
+        return view('blog.searchUser', ['users' => $users, 'searchQuery' => $searchQuery]);
+    }
+  
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductFormRequest $request,$id)
     {
-        //
+        $data=$request->validated();
+
+        $product=Product::findOrFail($id);
+        $product->name=$data['name'];
+        $product->slug=$data['slug'];
+        $product->description=$data['description'];
+        $product->price=$data['price'];
+        
+
+        if($request->hasfile('image'))
+        {
+            $destination='uploads/'.$product->image;
+
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+
+            $file=$request->file('image');
+            $filename=time().'.'.$file->getClientOriginalExtension();
+            $file->move('uploads/',$filename);
+            $product->image=$filename;
+        }
+       
+        $product->created_by=Auth::user()->id;
+        $product->update();
+        return redirect('user/products')->with('status','Product has been updated');
     }
 
     /**
@@ -92,6 +134,24 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product=Product::findOrFail($id);
+
+        if($product)
+        {
+            $destination='uploads'.$product->image;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+
+            $product->delete();
+             return redirect('user/products')->with('status','Product deleted sucessfully!');
+    
+        }
+        else
+        {
+            return redirect('user/products')->with('status','Product could not be deleted');
+        }
+    
     }
 }

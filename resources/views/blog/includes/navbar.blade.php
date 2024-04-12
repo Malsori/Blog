@@ -9,12 +9,12 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-               <li class="nav-item">
+               {{-- <li class="nav-item">
                   <a class="nav-link" href="{{ route('home') }}">Home</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="{{route('about')}}">About</a>
-               </li>
+               </li> --}}
                <li class="nav-item">
                   <a class="nav-link" href="{{route('blog')}}">Blog</a>
                </li>
@@ -45,8 +45,14 @@
                  
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="#"><img src="{{ asset('assets/images/serach-icon.png')}}"></a>
-               </li>
+                  {{-- <a class="nav-link" href="#"><img src="{{ asset('assets/images/serach-icon.png')}}"></a> --}}
+                 <form action="{{route('searchUser')}}" id="#search-form">
+                  <input type="text" name="search" placeholder="Search for users" id="search" >
+               </form>
+              
+ 
+               </li> 
+               
             </ul>
          </div>
       </nav>
