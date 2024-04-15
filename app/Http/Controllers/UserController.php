@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\User;
+use App\Models\follow;
 use App\Http\Requests\ProductFormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -80,7 +81,24 @@ class UserController extends Controller
         $products=Product::findOrFail($id);
         return view('blog.edit',['products'=>$products]);
     }
+ 
+    public function user($id)
+    {
+        $products=Product::where('created_by', $id)->get();
+        return view('blog.user',['products'=>$products]);
+        
+    }
 
+    public function follow(Request $request)
+    {
+        $data = $request->input('created_by');
+        $userId = Auth::id();
+        $follow=new Follow;
+        $follow->sent_by=$userId;
+        $follow->sent_to=$data;
+        $follow->save();
+        return redirect('user')->with('status','Follow request has been sent!');
+    }
    
     public function searchUser(Request $request)
     {
@@ -88,7 +106,7 @@ class UserController extends Controller
         $searchQuery = $request->input('search');
 
         
-        $users = User::where('name', 'like', '%'.$searchQuery.'%')->get();
+        $users = User::where('username', 'like', '%'.$searchQuery.'%')->get();
 
         
         return view('blog.searchUser', ['users' => $users, 'searchQuery' => $searchQuery]);

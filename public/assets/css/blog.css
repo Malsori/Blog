@@ -18,3 +18,24 @@ ion-icon
 {
     margin-top: 13%;
 }
+#center
+{
+   
+    padding:100px 0px;
+    border: 1px solid black;
+    width: 100%;
+    height: auto;
+    /* align-items: center; */
+    justify-content: center;
+}
+.user
+{
+    width: 90%;
+    height: 50px;
+    display: flex;
+    
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid rgb(0,0,128);
+    border-bottom:none;
+}

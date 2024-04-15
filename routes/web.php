@@ -57,6 +57,8 @@ Route::prefix('user')->middleware('auth', 'isUser')->group(function () {
     Route::put('/update-products/{id}', [UserController::class, 'update'])->name('update-products');
     Route::get('/delete-products/{id}', [UserController::class, 'destroy'])->name('delete-products');
     Route::get('/searchUser', [UserController::class, 'searchUser'])->name('searchUser');
+    Route::get('/user/{id}', [UserController::class, 'user'])->name('user');
+    Route::post('/follow', [UserController::class, 'follow'])->name('follow');
 });
 
 
