@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2024 at 12:46 AM
+-- Generation Time: Apr 17, 2024 at 06:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,6 +51,14 @@ CREATE TABLE `follows` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `follows`
+--
+
+INSERT INTO `follows` (`id`, `sent_by`, `sent_to`, `status`, `created_at`, `updated_at`) VALUES
+(12, 2, 3, 0, '2024-04-17 13:48:37', '2024-04-17 13:48:37'),
+(14, 2, 10, 0, '2024-04-17 14:09:42', '2024-04-17 14:09:42');
 
 -- --------------------------------------------------------
 
@@ -171,7 +179,12 @@ INSERT INTO `products` (`id`, `name`, `slug`, `description`, `price`, `image`, `
 (8, 'Product added from user', 'New movie', 'Aquaman', '6$', '1712954309.webp', 1, 2, '2024-04-11 21:55:56', '2024-04-12 18:38:29'),
 (10, 'Sidebar', 'Html', 'CSS', '10$', '1712879974.PNG', 0, 2, '2024-04-11 21:59:34', '2024-04-11 21:59:34'),
 (11, 'new', 'Very good', 'Tasty!', '5$', '1712880174.jpg', 1, 2, '2024-04-11 22:02:54', '2024-04-11 22:02:54'),
-(12, 'hello there', 'Very good', 'freshly baked', '10$', '1712929403.jpg', 1, 2, '2024-04-12 11:43:23', '2024-04-12 11:43:23');
+(12, 'hello there', 'Very good', 'freshly baked', '10$', '1712929403.jpg', 1, 2, '2024-04-12 11:43:23', '2024-04-12 11:43:23'),
+(13, 'Home Alone', 'old movie', 'Kevin is home Alone', '100$', '1713097927.jpg', 1, 2, '2024-04-14 10:32:07', '2024-04-14 10:32:07'),
+(14, 'New blog from profi', 'Project', 'New post here', '5$', '1713195917.webp', 1, 3, '2024-04-15 13:45:17', '2024-04-15 13:45:17'),
+(15, 'another one', 'efenfi', 'efefefefefewfewfewf', '10$', '1713195942.webp', 1, 3, '2024-04-15 13:45:42', '2024-04-15 13:45:42'),
+(16, 'De rada', 'grgrgr', 'jjiopj', '5$', '1713213308.PNG', 1, 1, '2024-04-15 18:35:08', '2024-04-15 18:35:08'),
+(17, 'OTR', 'Gango presence', 'Allo', '100$', '1713353186.jpg', 1, 10, '2024-04-17 09:26:26', '2024-04-17 09:26:26');
 
 -- --------------------------------------------------------
 
@@ -197,12 +210,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`, `username`) VALUES
-(1, 'Malsor', 'malsorarifi20@gmail.com', NULL, '$2y$12$gLs5ESEnOY6xf.aej30.v.HaZ2Y7G/huYmpElw/mHbTZoELRJrX7S', 'cacY7oA9HA76h7o16WFFJPbo7sKv4P1KzRA6tNINWzGi9Hxt8wWSyqUMmL3w', '2024-02-22 12:04:03', '2024-03-23 14:26:29', 1, 'Malsor'),
+(1, 'Malsor', 'malsorarifi20@gmail.com', NULL, '$2y$12$gLs5ESEnOY6xf.aej30.v.HaZ2Y7G/huYmpElw/mHbTZoELRJrX7S', 'fftg6ZFbSLLn5ZKF3LmpY8z2jRJzKISd8RRJOcVSwz8Nqxqz9mKz1sYNyW5Z', '2024-02-22 12:04:03', '2024-03-23 14:26:29', 1, 'Malsor'),
 (2, 'user', 'user@gmail.com', NULL, '$2y$12$hFqlX2sOe64YzFQJeXqtGOm.xEi2Zk3/J8leirz42YC86Gj4bzFmu', NULL, '2024-02-26 16:10:55', '2024-02-26 16:10:55', 0, 'User'),
 (3, 'Arianit', 'arianittershnjaku@gmail.com', NULL, '$2y$12$lOs7BtNc2FhRLlihiIPoguMMKphjqUjWLxaB5KM7Ta4JZGFzzPo36', NULL, '2024-04-06 12:29:39', '2024-04-06 12:29:39', 0, 'Arianit'),
 (4, 'Fatlind', 'fatlind@gmail.com', NULL, '$2y$12$LJgpB9OHOL1taEn8uSh4tOIUGOcz5RpK5/jcB7aUD0bnIsgyeQjlq', NULL, '2024-04-06 12:34:40', '2024-04-06 12:34:40', 0, 'Fatlind'),
 (8, 'varis', 'varis@gmail.com', NULL, '$2y$12$s9yEmUEpKdmTgAjzyc.fAOBXfQDujHr4zP7dKAcwjAy/qvnDPh/Mi', NULL, '2024-04-06 12:49:12', '2024-04-06 12:49:12', 0, 'varis'),
-(9, 'Lis', 'lisarifi04@gmail.com', NULL, '$2y$12$7o4uTLEz5oICxovpa1dvGeyp4t7y4OpsjTEjEGcRnPfIy5ftek4TC', NULL, '2024-04-11 20:13:52', '2024-04-11 20:13:52', 0, 'Lisi');
+(9, 'Lis', 'lisarifi04@gmail.com', NULL, '$2y$12$7o4uTLEz5oICxovpa1dvGeyp4t7y4OpsjTEjEGcRnPfIy5ftek4TC', NULL, '2024-04-11 20:13:52', '2024-04-11 20:13:52', 0, 'Lisi'),
+(10, 'tarik', 'tarikajvazi2@gmail.com', NULL, '$2y$12$csnZWQee9FYbxfqtJI7LnOdl5yZv8XDhuWX6vPAKlmyoCvTv65mfi', NULL, '2024-04-17 09:25:35', '2024-04-17 09:25:35', 0, 'tariki');
 
 --
 -- Indexes for dumped tables
@@ -281,7 +295,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `follows`
 --
 ALTER TABLE `follows`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -305,13 +319,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

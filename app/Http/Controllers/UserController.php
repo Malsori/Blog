@@ -81,24 +81,49 @@ class UserController extends Controller
         $products=Product::findOrFail($id);
         return view('blog.edit',['products'=>$products]);
     }
- 
-    public function user($id)
+    
+    
+    public function userProducts($id)
     {
         $products=Product::where('created_by', $id)->get();
-        return view('blog.user',['products'=>$products]);
+        $users=User::where('id', $id)->get();
+        return view('blog.user',
+        [
+            'products'=>$products,
+            'users'=>$users
+    
+        ]);
         
     }
 
     public function follow(Request $request)
-    {
-        $data = $request->input('created_by');
-        $userId = Auth::id();
-        $follow=new Follow;
-        $follow->sent_by=$userId;
-        $follow->sent_to=$data;
+{
+    $data = $request->input('created_by');
+    $userId = Auth::id();
+    
+    // Check if the follow already exists
+    $followExists = Follow::where('sent_by', $userId)->where('sent_to', $data)->exists();
+    
+    if ($followExists) {
+        
+        Follow::where('sent_by', $userId)->where('sent_to', $data)->delete();
+        return redirect('user/userProducts/'.$data)->with('status','Unfollowed successfully!');
+    } else {
+        // If follow doesn't exist, create it
+        $follow = new Follow;
+        $follow->sent_by = $userId;
+        $follow->sent_to = $data;
         $follow->save();
-        return redirect('user')->with('status','Follow request has been sent!');
+        return redirect('user/userProducts/'.$data)->with('status','Follow request has been sent!');
     }
+}
+
+
+public function followBack(Request $request)
+{
+    
+}
+
    
     public function searchUser(Request $request)
     {

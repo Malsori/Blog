@@ -4,21 +4,30 @@
 
 @section('content')
 <div id="center">
+   
 
    
+         @foreach($users as $user)
+         
+      
+             @php
+                 $followExists = \App\Models\Follow::where('sent_by', Auth::id())->where('sent_to', $user->id)->exists();
+             @endphp
+             <form action="{{ route('follow')}}" method="POST">
+                 @csrf
+                 <input type="hidden" name="created_by" value="{{$user->id}}">
+              
+            
+                 @if($followExists)
+                     
+                     <div class="read_bt"><input type="submit" value="Unfollow"></div>
+                 @else
+                     <div class="read_bt"><input type="submit" value="Follow"></div>
+                 @endif
+             </form>
+         @endforeach
          @foreach($products as $item)
-         @if($item->status=='1')
-         <form action="{{ route('follow')}}" method="POST">
-            @csrf
-         {{-- @method('PUT') --}}
-        
-         <input type="hidden" name="created_by" value="{{$item->created_by}}"></a></div>
-         <div class="read_bt"><input type="submit" value="Follow"></div>
-         {{-- <div class="form-group">
-            <label for="status">Follow</label>
-            <input type="checkbox" class="form-control"  id="status" name="created_by" value="1" @if(old('name') == 1) checked @endif>
-          </div> --}}
-        </form>
+             @if($item->status==1)
          <div class="col-lg-8 col-sm-12">
             <div class="about_img" ><img src="{{ asset('uploads/'.$item->image)}}" style="width:500px;height:500px;margin-top:20px;object-fit:contain"></div>
             

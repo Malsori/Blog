@@ -12,7 +12,7 @@
 @foreach($users as $user)
 
 <div class="user">
-<p><a href="{{ url('user/user/'.$user->id) }}">{{ $user->name }}</a></p>
+<p><a href="{{ url('user/userProducts/'.$user->id) }}">{{ $user->name }}</a></p>
 <p>{{ $user->email }}</p>
 <p>{{ $user->username }}</p>
 </div>
