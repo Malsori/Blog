@@ -118,11 +118,27 @@ class UserController extends Controller
     }
 }
 
-
-public function followBack(Request $request)
+public function requests(Request $request)
 {
+    $userId = Auth::id();
     
+    // Check if the follow already exists
+    $requests=Follow::where('sent_to', $userId)->with('creator')
+    ->get();
+    
+    return view('blog.followRequests',
+    [
+        'requests'=>$requests,
+       
+
+    ]);
 }
+
+
+// public function followBack(Request $request)
+// {
+    
+// }
 
    
     public function searchUser(Request $request)

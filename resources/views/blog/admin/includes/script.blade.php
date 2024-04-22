@@ -16,3 +16,4 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{asset('assetsAdmin/js/dashboard.js')}}"></script>
+    <script src="{{asset('assetsAdmin/js/blog.js')}}"></script>

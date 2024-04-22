@@ -58,7 +58,7 @@ Route::prefix('user')->middleware('auth', 'isUser')->group(function () {
     Route::get('/delete-products/{id}', [UserController::class, 'destroy'])->name('delete-products');
     Route::get('/searchUser', [UserController::class, 'searchUser'])->name('searchUser');
     Route::get('/userProducts/{id}', [UserController::class, 'userProducts'])->name('userProducts');
-    
+    Route::get('/requests', [UserController::class, 'requests'])->name('requests');
     Route::post('/follow', [UserController::class, 'follow'])->name('follow');
 });
 
