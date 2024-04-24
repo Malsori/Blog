@@ -135,10 +135,35 @@ public function requests(Request $request)
 }
 
 
-// public function followBack(Request $request)
-// {
+    public function followBack(Request $request)
+    {
+        $userId = Auth::id();
+        $sent_by = $request->input('sent_by');
+        $action = $request->input('action');
     
-// }
+        if ($action === 'accept') {
+            
+            $followBack = Follow::where('sent_by',$sent_by)->where('sent_to',$userId);
+
+            if($followBack)
+            {
+                $followBack->update([
+                    'status' => 1, 
+                    
+                ]);
+            }
+            return redirect('user/requests/')->with('status','Follow request has been sent!');
+        } 
+        elseif ($action === 'reject') {
+            $followBack = Follow::where('sent_by',$sent_by)->where('sent_to',$userId);
+            if($followBack)
+            {
+                $followBack->delete();
+            }
+            return redirect('user/requests/')->with('status','Follow request has been sent!');
+        }
+
+    }
 
    
     public function searchUser(Request $request)

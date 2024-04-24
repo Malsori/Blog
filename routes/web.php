@@ -60,6 +60,7 @@ Route::prefix('user')->middleware('auth', 'isUser')->group(function () {
     Route::get('/userProducts/{id}', [UserController::class, 'userProducts'])->name('userProducts');
     Route::get('/requests', [UserController::class, 'requests'])->name('requests');
     Route::post('/follow', [UserController::class, 'follow'])->name('follow');
+    Route::put('/followBack', [UserController::class, 'followBack'])->name('followBack');
 });
 
 

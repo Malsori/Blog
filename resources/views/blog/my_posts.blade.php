@@ -81,7 +81,7 @@
            </div>
        </nav>
 
-       <div id="center">
+       <div id="posts">
          @foreach($products as $item)
          @if($item->status=='1')
          

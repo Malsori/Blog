@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2024 at 06:23 PM
+-- Generation Time: Apr 24, 2024 at 06:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -57,8 +57,11 @@ CREATE TABLE `follows` (
 --
 
 INSERT INTO `follows` (`id`, `sent_by`, `sent_to`, `status`, `created_at`, `updated_at`) VALUES
-(12, 2, 3, 0, '2024-04-17 13:48:37', '2024-04-17 13:48:37'),
-(14, 2, 10, 0, '2024-04-17 14:09:42', '2024-04-17 14:09:42');
+(14, 2, 10, 0, '2024-04-17 14:09:42', '2024-04-17 14:09:42'),
+(15, 3, 10, 0, '2024-04-24 14:24:27', '2024-04-24 14:24:27'),
+(16, 3, 1, 0, '2024-04-24 14:24:39', '2024-04-24 14:24:39'),
+(17, 2, 3, 1, '2024-04-24 14:25:10', '2024-04-24 14:26:25'),
+(18, 8, 3, 1, '2024-04-24 14:25:35', '2024-04-24 14:26:57');
 
 -- --------------------------------------------------------
 
@@ -295,7 +298,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `follows`
 --
 ALTER TABLE `follows`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `likes`

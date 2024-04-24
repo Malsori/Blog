@@ -29,6 +29,19 @@ ion-icon
     display: flex;
     justify-content: center;
 }
+
+
+#posts
+{
+   
+    padding:100px 0px;
+    border: 1px solid black;
+    width: 50%;
+    height: auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
 .user
 {
     width: 90%;
