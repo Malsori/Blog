@@ -152,7 +152,7 @@ public function requests(Request $request)
                     
                 ]);
             }
-            return redirect('user/requests/')->with('status','Follow request has been sent!');
+            return redirect('user/requests/')->with('status','Follow has been accepted!');
         } 
         elseif ($action === 'reject') {
             $followBack = Follow::where('sent_by',$sent_by)->where('sent_to',$userId);
@@ -161,6 +161,16 @@ public function requests(Request $request)
                 $followBack->delete();
             }
             return redirect('user/requests/')->with('status','Follow request has been sent!');
+        }
+        elseif($action === 'followback')
+        {
+            $userId=Auth::id();
+            $sent_to = $request->input('sent_by');
+        $follow = new Follow;
+        $follow->sent_by = $userId;
+        $follow->sent_to = $sent_to;
+        $follow->save();
+        return redirect('user/userProducts/'.$sent_to)->with('status','Follow request has been sent!');
         }
 
     }

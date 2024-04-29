@@ -18,7 +18,9 @@
 <p>{{ $request->creator->email }}</p>
 <p>{{ $request->creator->username }}</p>
 <p>{{ $request->creator->username }}</p>
-<p> <form action="{{ route('followBack')}}" method="POST">
+<p> 
+    @if($request->status==0)
+    <form action="{{ route('followBack')}}" method="POST">
     @csrf
     @method('PUT')
     <input type="hidden" name="sent_by" value="{{$request->sent_by}}">
@@ -32,6 +34,24 @@
     <input type="hidden" name="action" value="reject"> <!-- Hidden input for reject action -->
     <div class="read_bt"><input type="submit" value="Reject"></div>
 </form>
+@else
+
+<form action="{{ route('followBack')}}" method="POST">
+    @csrf
+    @method('PUT')
+    <input type="hidden" name="sent_by" value="{{$request->sent_by}}">
+    <input type="hidden" name="action" value="followback"> <!-- Hidden input for accept action -->
+    <div class="read_bt"><input type="submit" value="Follow back"></div>
+</form>
+<form action="{{ route('followBack')}}" method="POST">
+    @csrf
+    @method('PUT')
+    <input type="hidden" name="sent_by" value="{{$request->sent_by}}">
+    <input type="hidden" name="action" value="reject"> <!-- Hidden input for reject action -->
+    <div class="read_bt"><input type="submit" value="Reject"></div>
+</form>
+@endif
+
 
 </p>
 </div>
