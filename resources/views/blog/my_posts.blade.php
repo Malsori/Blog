@@ -7,13 +7,32 @@
 
 <div class="wrapper">
    <!-- Sidebar  -->
+
+           <div class="container-fluid">
+
+               <button type="button" id="sidebarCollapse" class="btn btn-info">
+                   <i class="fas fa-align-left"></i>
+                   <span>Toggle</span>
+               </button>
+               <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                   <i class="fas fa-align-justify"></i>
+               </button>
+
+             
+           </div>
+      
    <nav id="sidebar">
        <div class="sidebar-header">
-           <h3>Bootstrap Sidebar</h3>
+     
        </div>
 
        <ul class="list-unstyled components">
            <p>Dummy Heading</p>
+           
+       
+
+           
+
            <li class="active">
                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
                <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -66,20 +85,7 @@
    <!-- Page Content  -->
    <div id="content" style="border:1px solid red;">
 
-       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="sidebar" style="">
-           <div class="container-fluid">
-
-               <button type="button" id="sidebarCollapse" class="btn btn-info">
-                   <i class="fas fa-align-left"></i>
-                   <span>Toggle Sidebar</span>
-               </button>
-               <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                   <i class="fas fa-align-justify"></i>
-               </button>
-
-             
-           </div>
-       </nav>
+       
 
        <div id="posts">
          @foreach($products as $item)

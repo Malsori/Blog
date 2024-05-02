@@ -36,7 +36,7 @@ ion-icon
    
     padding:100px 0px;
     border: 1px solid black;
-    width: 50%;
+    width: 100%;
     height: auto;
     flex-direction: column;
     display: flex;
@@ -118,6 +118,7 @@ a:focus {
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
+    border-color:green ;
 }
 
 #sidebar.active {
@@ -200,7 +201,22 @@ a.article:hover {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-
+#blog_posts
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#post_div
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
 #content {
     width: 100%;
     padding: 20px;

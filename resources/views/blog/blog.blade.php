@@ -3,13 +3,13 @@
     
 
 @section('content')
-<div id="center">
+<div id="blog_posts">
 
          
          @foreach($products as $item)
          @if($item->status=='1')
          
-         <div class="col-lg-8 col-sm-12">
+         <div class="col-lg-8 col-sm-12" style="border: 1px solid red;" id="post_div">
             <div class="about_img" ><img src="{{ asset('uploads/'.$item->image)}}" style="width:500px;height:500px;margin-top:20px;object-fit:contain"></div>
             
             <p class="post_text">{{ $item->price }}</p>
